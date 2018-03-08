@@ -1,0 +1,12 @@
+-Przysłanie i sprawdzenie gotowości +
+-Przesyłanie pozycji +
+-sprawdzenie zgonu +
+-pozycjonowanie przegranego 
+-bedzie dużo poprawiania w miedzyczasie :(
+-po wylosowaniu name innych graczy wyślij
+-poprawienie obiektu room3 i room2
+-odesłanie wyniku rundy i całego meczu (punktacja : 3,1,0,0 - remis : 1,1,0,0) gdy zostanie jeden gracz
+-zapis wyniku w pokoju po każdej rundzie
+-usuwanie pokoju jeśli ktoś wyjdzie zmiana play na false
+-jeśli kogoś wywali(err) kasowanie pokoju jak wyżej, ale mecz musi się skończyć
+-zablokowanie malowania krawędzi (trzeba widzieć gdzie się leci)

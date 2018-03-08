@@ -1,6 +1,7 @@
 const net = require('net');
 const matchmaking = require("./matchmakingModule.js");
 const objects = require("./objects.js");
+const terminal = require("./window.js");
 
 var server = net.createServer();
 var TablicaGraczy = [];
@@ -13,6 +14,8 @@ setInterval(function () {
         console.log("Lczba graczy: " + num);
     })
 }, 5000);
+
+terminal.cli();
 
 
 server.on("connection", function(socket)

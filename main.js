@@ -1,5 +1,4 @@
 const net = require('net');
-const music = require("./musicModule.js");
 const matchmaking = require("./matchmakingModule.js");
 const objects = require("./objects.js");
 
@@ -9,6 +8,12 @@ var DoWylosowania = [];
 var TAblicaGier = [Pokoje2os = [new objects.room2], Pokoje3os = Array(), Pokoje4os = Array()];
 var NotPlaying;
 
+setInterval(function () {
+    server.getConnections(function (err, num) {
+        console.log("Lczba graczy: " + num);
+    })
+}, 5000);
+
 
 server.on("connection", function(socket)
 {
@@ -17,9 +22,7 @@ server.on("connection", function(socket)
 
 	console.log("polonczono");
 
-	server.getConnections(function(err, num){
-		console.log("Lczba graczy: " + num);
-	});
+
 
 	socket.on("data", function(data)
 	{
@@ -88,7 +91,6 @@ server.listen(8081, function(){
 
 });
 
-//music.p(1);
 
 
 

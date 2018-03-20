@@ -9,11 +9,11 @@ var DoWylosowania = [];
 var TAblicaGier = [Pokoje2os = [new objects.room2], Pokoje3os = Array(), Pokoje4os = Array()];
 var NotPlaying;
 
-setInterval(function () {
-    server.getConnections(function (err, num) {
-        console.log("Lczba graczy: " + num);
-    })
-}, 5000);
+//setInterval(function () {
+//     server.getConnections(function (err, num) {
+//         console.log("Lczba graczy: " + num);
+//     })
+// }, 5000);
 
 terminal.cli();
 

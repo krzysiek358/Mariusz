@@ -1,7 +1,7 @@
 const net = require('net');
 const matchmaking = require("./matchmakingModule.js");
 const objects = require("./objects.js");
-const terminal = require("./window.js");
+const terminal = require("./output.js");
 
 var server = net.createServer();
 var TablicaGraczy = [];
@@ -66,7 +66,7 @@ server.on("connection", function(socket)
 				}
 				console.log("koordynaty");
 				break;
-			
+
 		}
 
 	});

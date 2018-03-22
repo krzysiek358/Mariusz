@@ -83,33 +83,34 @@ function Room4Class(socket1, socket2, socket3, socket4)
 		this.plansza[x][y] = true;
 		if (this.socket1.client.client == socket)
 		{
-		var position = x.toString() + "?" + y.toString() + "?" + this.socket1.client.name;
-		this.socket2.client.client.write(position);
-		this.socket3.client.client.write(position);
-		this.socket4.client.client.write(position);
+			var position = x.toString() + "?" + y.toString() + "?" + this.socket1.client.name;
+			this.socket2.client.client.write(position);
+			this.socket3.client.client.write(position);
+			this.socket4.client.client.write(position);
 		}
 		else if (this.socket2.client == socket)
 		{
-		var position = x.toString() + "?" + y.toString() + "?" + this.socket2.client.name;
-		this.socket1.client.client.write(position);
-		this.socket3.client.client.write(position);
-		this.socket4.client.client.write(position);
+			var position = x.toString() + "?" + y.toString() + "?" + this.socket2.client.name;
+			this.socket1.client.client.write(position);
+			this.socket3.client.client.write(position);
+			this.socket4.client.client.write(position);
 		}
 		else if (this.socket3.client == socket)
 		{
-		var position = x.toString() + "?" + y.toString() + "?" + this.socket3.client.name;
-		this.socket1.client.client.write(position);
-		this.socket2.client.client.write(position);
-		this.socket4.client.client.write(position);
+			var position = x.toString() + "?" + y.toString() + "?" + this.socket3.client.name;
+			this.socket1.client.client.write(position);
+			this.socket2.client.client.write(position);
+			this.socket4.client.client.write(position);
 		}
 		else
 		{
-		var position = x.toString() + "?" + y.toString() + "?" + this.socket4.client.name;
-		this.socket1.client.client.write(position);
-		this.socket2.client.client.write(position);
-		this.socket3.client.client.write(position);
+			var position = x.toString() + "?" + y.toString() + "?" + this.socket4.client.name;
+			this.socket1.client.client.write(position);
+			this.socket2.client.client.write(position);
+			this.socket3.client.client.write(position);
 		}
 	};
+
 	IsBusy = function(x, y, socket)
 	{
 		if(this.plansza[x][y]==true)
@@ -122,7 +123,6 @@ function Room4Class(socket1, socket2, socket3, socket4)
 				this.lost(this.socket3);
 			else
 				this.lost(this.socket4);
-
 		}
 		else
 		{

@@ -53,6 +53,7 @@ server.on("connection", function(socket)
 						TAblicaGier[TablicaGraczy[i].room[0]][TablicaGraczy[i].room[1]].redy(socket);
 					}
 				}
+				console.log("Gotowosc zgloszona");
 				break;
 			case "03":
 				value = [data.toString('utf8', 2, 5), data.toString('utf8', 5)];
@@ -63,6 +64,9 @@ server.on("connection", function(socket)
 						TAblicaGier[TablicaGraczy[i].room[0]][TablicaGraczy[i].room[1]].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
 					}
 				}
+				console.log("koordynaty");
+				break;
+			
 		}
 
 	});

@@ -31,6 +31,7 @@ server.on("connection", function(socket)
 		var code = data.toString('utf8', 0, 2);
 		var value;
 		console.log(data.toString('utf8'));
+		console.log(code);
 
 		switch(code)
 		{

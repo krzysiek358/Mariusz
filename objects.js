@@ -1,4 +1,4 @@
-function ClientClass(socket)
+class ClientClass(socket)
 {
 	play = false;
 	redy = false;
@@ -7,7 +7,7 @@ function ClientClass(socket)
 	room = [2];
 }
 
-function Room4Class()
+class Room4Class()
 {
 	active = false;
 	Socket1 =

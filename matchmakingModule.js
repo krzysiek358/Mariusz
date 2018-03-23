@@ -11,7 +11,7 @@ function matchmaking(player, games)				//przydzielanie graczy
 	for (var i = 0; i < games.length; i++) 
 	{
 
-		console.log(games[i].Socket1);
+		console.log(games);
 		// if(games[i].Socket1.client == null)
 		// 	games[i].Socket1.client = player;
 

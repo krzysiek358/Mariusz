@@ -6,14 +6,13 @@ const terminal = require("./output.js");
 var server = net.createServer();
 var TablicaGraczy = [];
 var DoWylosowania = [];
-var TAblicaGier = [Pokoje2os = [new objects.room2], Pokoje3os = Array(), Pokoje4os = Array()];
+var TAblicaGier = [5];
+for (var i = TAblicaGier.length - 1; i >= 0; i--)
+	TAblicaGier[i] = new objects.room4;
+
+
 var NotPlaying;
 
-//setInterval(function () {
-//     server.getConnections(function (err, num) {
-//         console.log("Lczba graczy: " + num);
-//     })
-// }, 5000);
 
 terminal.cli();
 
@@ -31,20 +30,22 @@ server.on("connection", function(socket)
 	{
 		var code = data.toString('utf8', 0, 2);
 		var value;
-		var border = 0;
+
 		switch(code)
 		{
 			case "01": //conected
 				value = data.toString('utf8', 2);
+
 				for (var i = TablicaGraczy.length - 1; i >= 0; i--)
+				{
 					if(TablicaGraczy[i].client == socket)
 						TablicaGraczy[i].name = value;
-				if (border > 3)
-				{
-					matchmaking.find(TablicaGraczy);
+					matchmaking.find(TablicaGraczy[i], TAblicaGier);
 				}
+
 				console.log("dodano");
 				break;
+
 			case "02":
 				for (var i = TablicaGraczy.length - 1; i >= 0; i--)
 				{
@@ -55,6 +56,7 @@ server.on("connection", function(socket)
 				}
 				console.log("Gotowosc zgloszona");
 				break;
+
 			case "03":
 				value = [data.toString('utf8', 2, 5), data.toString('utf8', 5)];
 				for (var i = TablicaGraczy.length - 1; i >= 0; i--)
@@ -72,22 +74,7 @@ server.on("connection", function(socket)
 	});
 
 
-	socket.on("error", function() //Usuwanie gracza gdy przestanie grać
-	{
 
-		// for (var i = TablicaGraczy.length - 1; i >= 0; i--)
-		// {
-		// 	if(TablicaGraczy[i] === socket) TablicaGraczy.splice(i, 1);
-		// }
-
-		// for (var i = TAblicaGier.length - 1; i >= 0; i--)
-		// {
-		// 	for (var j = 3; j >= 0; j--)
-		// 	{
-		// 		if(TAblicaGier[i][j] === socket) TAblicaGier[i][j] = 0;
-		// 	}
-		// }
-	});
 
 
 
@@ -102,5 +89,5 @@ server.listen(8081, function(){
 
 
 module.exports = {
-	Tab: TAblicaGier
+	Tab: TAblicaGier,
 }

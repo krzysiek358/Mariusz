@@ -146,14 +146,14 @@ class Room4Class
 	{
 		if(this.plansza[x][y]==true)
 		{
-			if (this.socket1.client.client == socket)
-				this.lost(this.socket1);
-			else if (this.socket2.client.client == socket)
-				this.lost(this.socket2);
-			else if (this.socket3.client.client == socket)
-				this.lost(this.socket3);
+			if (this.Socket1.client.ip.address == socket.address().address)
+				this.lost(this.Socket1);
+			else if (this.Socket2.client.ip.address == socket.address().address)
+				this.lost(this.Socket2);
+			else if (this.Socket3.client.ip.address == socket.address().address)
+				this.lost(this.Socket3);
 			else
-				this.lost(this.socket4);
+				this.lost(this.Socket4);
 		}
 		else
 		{

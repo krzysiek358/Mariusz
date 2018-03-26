@@ -2,6 +2,7 @@ const net = require('net');
 const matchmaking = require("./matchmakingModule.js");
 const objects = require("./objects.js");
 const terminal = require("./output.js");
+const util = require('util')
 
 var server = net.createServer();
 var TablicaGraczy = [];
@@ -30,8 +31,7 @@ server.on("connection", function(socket)
 	{
 		var code = data.toString('utf8', 0, 2);
 		var value;
-		console.log(data);
-		console.log(data.toString('utf8'));
+
 		console.log(code);
 
 		switch(code)
@@ -42,33 +42,105 @@ server.on("connection", function(socket)
 				for (var i = TablicaGraczy.length - 1; i >= 0; i--)
 				{
 					if(TablicaGraczy[i].client == socket)
+					{
 						TablicaGraczy[i].name = value;
-					matchmaking.find(TablicaGraczy[i], TAblicaGier);
+						matchmaking.find(TablicaGraczy[i], TAblicaGier);
+					}
+
 				}
 
 				console.log("dodano");
 				break;
 
 			case "02":
-				for (var i = TablicaGraczy.length - 1; i >= 0; i--)
+				for (var i = 0; i < TAblicaGier.length; i++)
 				{
-					if (socket == TablicaGraczy[i].client)
+					if(TAblicaGier[i].Socket1.client !== null)
 					{
-						TAblicaGier[TablicaGraczy[i].room[0]][TablicaGraczy[i].room[1]].redy(socket);
+						// console.log(util.inspect(TAblicaGier[i].Socket1.client.ip, false, null));
+						// console.log(util.inspect(socket.address(), false, null));
+						// console.log(TAblicaGier[i].Socket1.client.ip.address == socket.address().address);
+						if (socket.address().address == TAblicaGier[i].Socket1.client.ip.address)
+						{
+							TAblicaGier[i].Socket1.Redy = true;
+							console.log("1 Gotowosc zgloszona");
+							TAblicaGier[i].redy();
+							break;
+						}
+					}
+					if(TAblicaGier[i].Socket2.client !== null)
+					{
+						if (socket.address() == TAblicaGier[i].Socket2.client.ip)
+						{
+							TAblicaGier[i].Socket2.Redy = true;
+							console.log("2 Gotowosc zgloszona");
+							TAblicaGier[i].redy();
+							break;
+						}
+					}
+					if(TAblicaGier[i].Socket3.client !== null)
+					{
+						if (socket.address() == TAblicaGier[i].Socket3.client.ip)
+						{
+							TAblicaGier[i].Socket3.Redy = true;
+							console.log("3 Gotowosc zgloszona");
+							TAblicaGier[i].redy();
+							break;
+						}
+					}
+					if(TAblicaGier[i].Socket4.client !== null)
+					{
+						if (socket.address() == TAblicaGier[i].Socket4.client.ip)
+						{
+							TAblicaGier[i].Socket4.Redy = true;
+							console.log("4 Gotowosc zgloszona");
+							TAblicaGier[i].redy();
+							break;
+						}
 					}
 				}
-				console.log("Gotowosc zgloszona");
+				
 				break;
 
 			case "03":
 				value = [data.toString('utf8', 2, 5), data.toString('utf8', 5)];
-				for (var i = TablicaGraczy.length - 1; i >= 0; i--)
+
+				for (var i = 0; i < TAblicaGier.length; i++)
 				{
-					if (socket == TablicaGraczy[i].client)
+					if(TAblicaGier[i].Socket1.client !== null)
 					{
-						TAblicaGier[TablicaGraczy[i].room[0]][TablicaGraczy[i].room[1]].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+						if (socket == TAblicaGier[i].Socket1.client.client)
+						{
+							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+							break;
+						}
+					}
+					if(TAblicaGier[i].Socket2.client !== null)
+					{
+						if (socket == TAblicaGier[i].Socket2.client.client)
+						{
+							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+							break;
+						}
+					}
+					if(TAblicaGier[i].Socket3.client !== null)
+					{
+						if (socket == TAblicaGier[i].Socket3.client.client)
+						{
+							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+							break;
+						}
+					}
+					if(TAblicaGier[i].Socket4.client !== null)
+					{
+						if (socket == TAblicaGier[i].Socket4.client.client)
+						{
+							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+							break;
+						}
 					}
 				}
+
 				console.log("koordynaty");
 				break;
 
@@ -94,3 +166,4 @@ server.listen(8081, function(){
 module.exports = {
 	Tab: TAblicaGier,
 }
+

@@ -1,52 +1,60 @@
-class ClientClass(socket)
+class ClientClass
 {
-	play = false;
-	redy = false;
-	name = "";
-	client = socket;
-	room = [2];
+
+	constructor(socket)
+	{
+		this.name = "";
+		this.client = socket;
+		this.ip = socket.address();
+	}
+
 }
 
-class Room4Class()
+class Room4Class
 {
-	active = false;
-	Socket1 =
+
+	constructor()
 	{
-		MiejsceStartowe: [400, 560],  //x i y wzglendem dolnego lewego rogu
-		Kierunek: 0, //w dół
-		Redy:false,
-		client: null
-	};
-	Socket2 =
-	{
-		MiejsceStartowe: [400, 40],
-		Kierunek: 180, //w gore
-		Redy:false,
-		client: null
-	};
-	Socket3 =
-	{
-		MiejsceStartowe: [40, 300],
-		Kierunek: 270, //w prawo
-		Redy:false,
-		client: null
-	};
-	Socket4 =
-	{
-		MiejsceStartowe: [760, 300],
-		Kierunek: 90, //w lewo
-		Redy:false,
-		client: null
-	},
-	TablicaWyniku = Array(4);
-	TablicaWynikow = Array(4);
-	plansza = Array(800);
-	for (var i = 0; i < plansza.length; i++)
-	{
-		plansza[i] = Array(600);
+		this.active = false;
+		this.Socket1 =
+		{
+			MiejsceStartowe: [400, 560],  //x i y wzglendem dolnego lewego rogu
+			Kierunek: 0, //w dół
+			Redy:false,
+			client: null
+		};
+		this.Socket2 =
+		{
+			MiejsceStartowe: [400, 40],
+			Kierunek: 180, //w gore
+			Redy:false,
+			client: null
+		};
+		this.Socket3 =
+		{
+			MiejsceStartowe: [40, 300],
+			Kierunek: 270, //w prawo
+			Redy:false,
+			client: null
+		};
+		this.Socket4 =
+		{
+			MiejsceStartowe: [760, 300],
+			Kierunek: 90, //w lewo
+			Redy:false,
+			client: null
+		},
+		this.TablicaWyniku = Array(4);
+		this.TablicaWynikow = Array(4);
+		this.plansza = Array(800);
+		for (var i = 0; i < this.plansza.length; i++)
+		{
+			this.plansza[i] = Array(600);
+		}
 	}
+	
 //	SrednicaOgona = 6; // px
-	start = function(players)
+	start(players)
 	{
 		if (players == 4)
 		{
@@ -67,48 +75,40 @@ class Room4Class()
 			this.Socket2.client.client.write("800?600?6?400?040?180");
 		}
 
-	};
-	redy = function(socket)
+	}
+	redy(socket)
 	{
-		if(socket == this.socket1.client.client)
-			this.socket1.Redy = true;
-		else if(socket == this.socket2.client.client)
-			this.socket2.Redy = true;
-		else if(socket == this.socket3.client.client)
-			this.socket3.Redy = true;
-		else if(socket == this.socket4.client.client)
-			this.socket4.Redy = true;
 
-		if(this.socket1.Redy == true && this.socket2.Redy == true &&
-		 this.socket3.Redy == true && this.socket4.Redy == true)
+		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
+		 this.Socket3.Redy == true && this.Socket4.Redy == true)
 		{
-			this.socket1.client.client.write("start");
-			this.socket2.client.client.write("start");
-			this.socket3.client.client.write("start");
-			this.socket4.client.client.write("start");
+			this.Socket1.client.client.write("start");
+			this.Socket2.client.client.write("start");
+			this.Socket3.client.client.write("start");
+			this.Socket4.client.client.write("start");
 			this.start(4);
 		}
-		else if (this.socket1.Redy == true && this.socket2.Redy == true &&
-		 this.socket3.Redy == true && this.socket4 == null) 
+		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
+		 this.Socket3.Redy == true && this.Socket4 == null) 
 		{
-			this.socket1.client.client.write("start");
-			this.socket2.client.client.write("start");
-			this.socket3.client.client.write("start");
+			this.Socket1.client.client.write("start");
+			this.Socket2.client.client.write("start");
+			this.Socket3.client.client.write("start");
 			this.start(3);
 		}
-		else if (this.socket1.Redy == true && this.socket2.Redy == true &&
-		 this.socket3 == null && this.socket4 == null) 
+		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
+		 this.Socket3 == null && this.Socket4 == null) 
 		{
-			this.socket1.client.client.write("start");
-			this.socket2.client.client.write("start");
+			this.Socket1.client.client.write("start");
+			this.Socket2.client.client.write("start");
 			this.start(2);
 		}
-	};
-	end = function()
+	}
+	end()
 	{
 
-	};
-	PositionBusy = function(x, y, socket)
+	}
+	PositionBusy(x, y, socket)
 	{
 
 		this.plansza[x][y] = true;
@@ -140,9 +140,9 @@ class Room4Class()
 			this.socket2.client.client.write(position);
 			this.socket3.client.client.write(position);
 		}
-	};
+	}
 
-	IsBusy = function(x, y, socket)
+	IsBusy(x, y, socket)
 	{
 		if(this.plansza[x][y]==true)
 		{
@@ -159,11 +159,11 @@ class Room4Class()
 		{
 			this.PositionBusy(x, y, socket);
 		}
-	};
-	lost = function(client)
+	}
+	lost(client)
 	{
 		this.TablicaWyniku.push(client);
-	};
+	}
 }
 
 module.exports =

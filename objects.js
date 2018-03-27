@@ -5,7 +5,7 @@ class ClientClass
 	{
 		this.name = "";
 		this.client = socket;
-		this.ip = socket.address();
+		this.ip = socket.remoteAddress;
 	}
 
 }

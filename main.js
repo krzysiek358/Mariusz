@@ -60,7 +60,7 @@ server.on("connection", function(socket)
 						console.log(util.inspect(TAblicaGier[i].Socket1.client.ip, false, null));
 						console.log(util.inspect(socket.address(), false, null));
 						console.log(util.inspect(socket, false, null));
-						if (socket.address().address === TAblicaGier[i].Socket1.client.ip.address)
+						if (socket.remoteAddress === TAblicaGier[i].Socket1.client.ip)
 						{
 							TAblicaGier[i].Socket1.Redy = true;
 							console.log("1 Gotowosc zgloszona");
@@ -70,7 +70,7 @@ server.on("connection", function(socket)
 					}
 					if(TAblicaGier[i].Socket2.client !== null)
 					{
-						if (socket.address().address === TAblicaGier[i].Socket2.client.ip.address)
+						if (socket.remoteAddress === TAblicaGier[i].Socket2.client.ip)
 						{
 							TAblicaGier[i].Socket2.Redy = true;
 							console.log("2 Gotowosc zgloszona");
@@ -80,7 +80,7 @@ server.on("connection", function(socket)
 					}
 					if(TAblicaGier[i].Socket3.client !== null)
 					{
-						if (socket.address().address === TAblicaGier[i].Socket3.client.ip.address)
+						if (socket.remoteAddress === TAblicaGier[i].Socket3.client.ip)
 						{
 							TAblicaGier[i].Socket3.Redy = true;
 							console.log("3 Gotowosc zgloszona");
@@ -90,7 +90,7 @@ server.on("connection", function(socket)
 					}
 					if(TAblicaGier[i].Socket4.client !== null)
 					{
-						if (socket.address().address === TAblicaGier[i].Socket4.client.ip.address)
+						if (socket.remoteAddress === TAblicaGier[i].Socket4.client.ip)
 						{
 							TAblicaGier[i].Socket4.Redy = true;
 							console.log("4 Gotowosc zgloszona");

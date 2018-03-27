@@ -46,10 +46,11 @@ class Room4Class
 		},
 		this.TablicaWyniku = Array(4);
 		this.TablicaWynikow = Array(4);
-		this.plansza = Array(800);
+		this.MapSize = [800, 600]
+		this.plansza = Array(this.MapSize[0]);
 		for (var i = 0; i < this.plansza.length; i++)
 		{
-			this.plansza[i] = Array(600);
+			this.plansza[i] = Array(this.MapSize[1]);
 		}
 	}
 	
@@ -82,25 +83,28 @@ class Room4Class
 		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.Redy == true)
 		{
-			this.Socket1.client.client.write("start");
-			this.Socket2.client.client.write("start");
-			this.Socket3.client.client.write("start");
-			this.Socket4.client.client.write("start");
+			console.log("1");
+			this.Socket1.client.client.write(234234);
+			this.Socket2.client.client.write(234234);
+			this.Socket3.client.client.write(234234);
+			this.Socket4.client.client.write(234234);
 			this.start(4);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4 == null) 
 		{
-			this.Socket1.client.client.write("start");
-			this.Socket2.client.client.write("start");
-			this.Socket3.client.client.write("start");
+			console.log("2");
+			this.Socket1.client.client.write(234234);
+			this.Socket2.client.client.write(234234);
+			this.Socket3.client.client.write(234234);
 			this.start(3);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3 == null && this.Socket4 == null) 
 		{
-			this.Socket1.client.client.write("start");
-			this.Socket2.client.client.write("start");
+			console.log("3");
+			this.Socket1.client.client.write(234234);
+			this.Socket2.client.client.write(234234);
 			this.start(2);
 		}
 	}
@@ -112,33 +116,33 @@ class Room4Class
 	{
 
 		this.plansza[x][y] = true;
-		if (this.socket1.client.client == socket)
+		if (this.Socket1.client.client == socket)
 		{
-			var position = x.toString() + "?" + y.toString() + "?" + this.socket1.client.name;
-			this.socket2.client.client.write(position);
-			this.socket3.client.client.write(position);
-			this.socket4.client.client.write(position);
+			var position = x.toString() + "?" + y.toString() + "?" + this.Socket1.client.name;
+			this.Socket2.client.client.write(position);
+			this.Socket3.client.client.write(position);
+			this.Socket4.client.client.write(position);
 		}
-		else if (this.socket2.client == socket)
+		else if (this.Socket2.client == socket)
 		{
-			var position = x.toString() + "?" + y.toString() + "?" + this.socket2.client.name;
-			this.socket1.client.client.write(position);
-			this.socket3.client.client.write(position);
-			this.socket4.client.client.write(position);
+			var position = x.toString() + "?" + y.toString() + "?" + this.Socket2.client.name;
+			this.Socket1.client.client.write(position);
+			this.Socket3.client.client.write(position);
+			this.Socket4.client.client.write(position);
 		}
-		else if (this.socket3.client == socket)
+		else if (this.Socket3.client == socket)
 		{
-			var position = x.toString() + "?" + y.toString() + "?" + this.socket3.client.name;
-			this.socket1.client.client.write(position);
-			this.socket2.client.client.write(position);
-			this.socket4.client.client.write(position);
+			var position = x.toString() + "?" + y.toString() + "?" + this.Socket3.client.name;
+			this.Socket1.client.client.write(position);
+			this.Socket2.client.client.write(position);
+			this.Socket4.client.client.write(position);
 		}
 		else
 		{
-			var position = x.toString() + "?" + y.toString() + "?" + this.socket4.client.name;
-			this.socket1.client.client.write(position);
-			this.socket2.client.client.write(position);
-			this.socket3.client.client.write(position);
+			var position = x.toString() + "?" + y.toString() + "?" + this.Socket4.client.name;
+			this.Socket1.client.client.write(position);
+			this.Socket2.client.client.write(position);
+			this.Socket3.client.client.write(position);
 		}
 	}
 

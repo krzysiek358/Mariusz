@@ -15,7 +15,7 @@ for (var i = TAblicaGier.length - 1; i >= 0; i--)
 var NotPlaying;
 
 
-terminal.cli();
+//terminal.cli();
 
 
 server.on("connection", function(socket)
@@ -57,6 +57,9 @@ server.on("connection", function(socket)
 				{
 					if(TAblicaGier[i].Socket1.client !== null)
 					{
+						console.log(util.inspect(TAblicaGier[i].Socket1.client.ip, false, null));
+						console.log(util.inspect(socket.address(), false, null));
+						console.log(util.inspect(socket, false, null));
 						if (socket.address().address === TAblicaGier[i].Socket1.client.ip.address)
 						{
 							TAblicaGier[i].Socket1.Redy = true;

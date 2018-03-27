@@ -79,7 +79,10 @@ class Room4Class
 	}
 	redy(socket)
 	{
-		console.log("przedsionek");
+		
+		console.log(this.Socket1.Redy);
+		console.log(this.Socket2.Redy);
+
 
 		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.Redy == true)

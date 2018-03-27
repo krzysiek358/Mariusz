@@ -95,7 +95,7 @@ class Room4Class
 			this.start(4);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
-		 this.Socket3.Redy == true && this.Socket4 == null) 
+		 this.Socket3.Redy == true && this.Socket4.client == null) 
 		{
 			console.log("2");
 			this.Socket1.client.client.write(234234);
@@ -104,7 +104,7 @@ class Room4Class
 			this.start(3);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
-		 this.Socket3 == null && this.Socket4 == null) 
+		 this.Socket3.client == null && this.Socket4.client == null) 
 		{
 			console.log("3");
 			this.Socket1.client.client.write(234234);

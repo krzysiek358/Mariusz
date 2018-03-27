@@ -58,8 +58,6 @@ server.on("connection", function(socket)
 					if(TAblicaGier[i].Socket1.client !== null)
 					{
 						console.log(util.inspect(TAblicaGier[i].Socket1.client.ip, false, null));
-						console.log(util.inspect(socket.address(), false, null));
-						console.log(util.inspect(socket, false, null));
 						if (socket.remoteAddress === TAblicaGier[i].Socket1.client.ip)
 						{
 							TAblicaGier[i].Socket1.Redy = true;

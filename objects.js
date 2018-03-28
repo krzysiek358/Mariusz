@@ -43,10 +43,10 @@ class Room4Class
 			Kierunek: 90, //w lewo
 			Redy:false,
 			client: null
-		},
+		};
 		this.TablicaWyniku = Array(4);
 		this.TablicaWynikow = Array(4);
-		this.MapSize = [800, 600]
+		this.MapSize = [800, 600];
 		this.plansza = Array(this.MapSize[0]);
 		for (var i = 0; i < this.plansza.length; i++)
 		{
@@ -88,27 +88,27 @@ class Room4Class
 		 this.Socket3.Redy == true && this.Socket4.Redy == true)
 		{
 			console.log("1");
-			this.Socket1.client.client.write(234234);
-			this.Socket2.client.client.write(234234);
-			this.Socket3.client.client.write(234234);
-			this.Socket4.client.client.write(234234);
+			this.Socket1.client.client.write(Buffer.from(this.MapSize));
+			this.Socket2.client.client.write(Buffer.from(this.MapSize));
+			this.Socket3.client.client.write(Buffer.from(this.MapSize));
+			this.Socket4.client.client.write(Buffer.from(this.MapSize));
 			this.start(4);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.client == null) 
 		{
 			console.log("2");
-			this.Socket1.client.client.write(234234);
-			this.Socket2.client.client.write(234234);
-			this.Socket3.client.client.write(234234);
+			this.Socket1.client.client.write(Buffer.from(this.MapSize));
+			this.Socket2.client.client.write(Buffer.from(this.MapSize));
+			this.Socket3.client.client.write(Buffer.from(this.MapSize));
 			this.start(3);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.client == null && this.Socket4.client == null) 
 		{
 			console.log("3");
-			this.Socket1.client.client.write(234234);
-			this.Socket2.client.client.write(234234);
+			this.Socket1.client.client.write(Buffer.from(this.MapSize));
+			this.Socket2.client.client.write(Buffer.from(this.MapSize));
 			this.start(2);
 		}
 	}

@@ -59,21 +59,21 @@ class Room4Class
 	{
 		if (players == 4)
 		{
-			this.Socket1.client.client.write("800?600?6?400?560?000");//pierwsze dwa plansza, średnica, następne dwa pozycja startowa, kierunek
-			this.Socket2.client.client.write("800?600?6?400?040?180");
-			this.Socket3.client.client.write("800?600?6?040?300?270");
-			this.Socket4.client.client.write("800?600?6?760?300?090");
+			this.Socket1.client.client.write(Buffer.from(this.MapSize)); //wysyłanie wielkości planszy
+			this.Socket2.client.client.write(Buffer.from(this.MapSize));
+			this.Socket3.client.client.write(Buffer.from(this.MapSize));
+			this.Socket4.client.client.write(Buffer.from(this.MapSize));
 		}
 		else if (players == 3)
 		{
-			this.Socket1.client.client.write("800?600?6?400?560?000");//pierwsze dwa plansza, średnica, następne dwa pozycja startowa, kierunek
-			this.Socket2.client.client.write("800?600?6?400?040?180");
-			this.Socket3.client.client.write("800?600?6?040?300?270");
+			this.Socket1.client.client.write(Buffer.from(this.MapSize)); //wysyłanie wielkości planszy
+			this.Socket2.client.client.write(Buffer.from(this.MapSize));
+			this.Socket3.client.client.write(Buffer.from(this.MapSize));
 		}
 		else if (players == 2)
 		{
-			this.Socket1.client.client.write("800?600?6?400?560?000");//pierwsze dwa plansza, średnica, następne dwa pozycja startowa, kierunek
-			this.Socket2.client.client.write("800?600?6?400?040?180");
+			this.Socket1.client.client.write(Buffer.from(this.MapSize)); //wysyłanie wielkości planszy
+			this.Socket2.client.client.write(Buffer.from(this.MapSize));
 		}
 
 	}
@@ -87,28 +87,16 @@ class Room4Class
 		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.Redy == true)
 		{
-			console.log("1");
-			this.Socket1.client.client.write(Buffer.from(this.MapSize));
-			this.Socket2.client.client.write(Buffer.from(this.MapSize));
-			this.Socket3.client.client.write(Buffer.from(this.MapSize));
-			this.Socket4.client.client.write(Buffer.from(this.MapSize));
 			this.start(4);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.client == null) 
 		{
-			console.log("2");
-			this.Socket1.client.client.write(Buffer.from(this.MapSize));
-			this.Socket2.client.client.write(Buffer.from(this.MapSize));
-			this.Socket3.client.client.write(Buffer.from(this.MapSize));
 			this.start(3);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.client == null && this.Socket4.client == null) 
 		{
-			console.log("3");
-			this.Socket1.client.client.write(Buffer.from(this.MapSize));
-			this.Socket2.client.client.write(Buffer.from(this.MapSize));
 			this.start(2);
 		}
 	}

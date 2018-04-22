@@ -4,7 +4,7 @@ const objects = require("./objects.js");
 const terminal = require("./output.js");
 const util = require('util')
 
-var server = net.createServer();
+const server = net.createServer();
 var TablicaGraczy = [];
 var DoWylosowania = [];
 var TAblicaGier = [5];
@@ -31,6 +31,8 @@ server.on("connection", function(socket)
 	{
 		var code = data.toString('utf8', 0, 2);
 		var value;
+
+		socket.setKeepAlive(true);
 
 		console.log(code);
 
@@ -101,45 +103,48 @@ server.on("connection", function(socket)
 				break;
 
 			case "03":
-				value = [data.toString('utf8', 2, 5), data.toString('utf8', 5)];
+				// value = [data.toString('utf8', 2, 5), data.toString('utf8', 5)];
+				console.log("03");
+				console.log("---------------------------");
+				value = data;
+				console.log(value);
 
-				for (var i = 0; i < TAblicaGier.length; i++)
-				{
-					if(TAblicaGier[i].Socket1.client !== null)
-					{
-						if (socket == TAblicaGier[i].Socket1.client.client)
-						{
-							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
-							break;
-						}
-					}
-					if(TAblicaGier[i].Socket2.client !== null)
-					{
-						if (socket == TAblicaGier[i].Socket2.client.client)
-						{
-							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
-							break;
-						}
-					}
-					if(TAblicaGier[i].Socket3.client !== null)
-					{
-						if (socket == TAblicaGier[i].Socket3.client.client)
-						{
-							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
-							break;
-						}
-					}
-					if(TAblicaGier[i].Socket4.client !== null)
-					{
-						if (socket == TAblicaGier[i].Socket4.client.client)
-						{
-							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
-							break;
-						}
-					}
-				}
+				// for (var i = 0; i < TAblicaGier.length; i++)
+				// {
+				// 	if(TAblicaGier[i].Socket1.client !== null)
+				// 	{
+				// 		if (socket == TAblicaGier[i].Socket1.client.client)
+				// 		{
+				// 			TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+				// 			break;
+				// 		}
+				// 	}
+				// 	if(TAblicaGier[i].Socket2.client !== null)
+				// 	{
+				// 		if (socket == TAblicaGier[i].Socket2.client.client)
+				// 		{
+				// 			TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+				// 			break;
+				// 		}
+				// 	}
+				// 	if(TAblicaGier[i].Socket3.client !== null)
+				// 	{
+				// 		if (socket == TAblicaGier[i].Socket3.client.client)
+				// 		{
+				// 			TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+				// 			break;
+				// 		}
+				// 	}
+				// 	if(TAblicaGier[i].Socket4.client !== null)
+				// 	{
+				// 		if (socket == TAblicaGier[i].Socket4.client.client)
+				// 		{
+				// 			TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+				// 			break;
+				// 		}
+				// 	}
+				// }
 
-				console.log("koordynaty");
 				break;
 
 		}

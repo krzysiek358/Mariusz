@@ -63,7 +63,6 @@ class Room4Class
 	{
 		if (players == 4)
 		{
-<<<<<<< HEAD
 			this.Socket1.client.client.write(Buffer.from(this.MapSize[0].toString() + " " + this.MapSize[1].toString() + " " + this.Socket1.MiejsceStartowe[0].toString() 
 			 + " " + this.Socket1.MiejsceStartowe[1].toString() + " " + this.Socket1.Kierunek.toString()+ " " + players.toString() + " " + this.Socket1.num.toString()), 'utf8');
 
@@ -94,23 +93,6 @@ class Room4Class
 
 			this.Socket2.client.client.write(Buffer.from(this.MapSize[0].toString() + " " + this.MapSize[1].toString() + " " + this.Socket2.MiejsceStartowe[0].toString()
 			 + " " + this.Socket2.MiejsceStartowe[1].toString() + " " + this.Socket2.Kierunek.toString()+ " " + players.toString() + " " + this.Socket2.num.toString()), 'utf8');
-=======
-			this.Socket1.client.client.write(Buffer.from(this.MapSize)); //wysyłanie wielkości planszy
-			this.Socket2.client.client.write(Buffer.from(this.MapSize));
-			this.Socket3.client.client.write(Buffer.from(this.MapSize));
-			this.Socket4.client.client.write(Buffer.from(this.MapSize));
-		}
-		else if (players == 3)
-		{
-			this.Socket1.client.client.write(Buffer.from(this.MapSize)); //wysyłanie wielkości planszy
-			this.Socket2.client.client.write(Buffer.from(this.MapSize));
-			this.Socket3.client.client.write(Buffer.from(this.MapSize));
-		}
-		else if (players == 2)
-		{
-			this.Socket1.client.client.write(Buffer.from(this.MapSize)); //wysyłanie wielkości planszy
-			this.Socket2.client.client.write(Buffer.from(this.MapSize));
->>>>>>> 00b8289e9a5bf061aae696af5e0d715703dd45c3
 		}
 
 	}
@@ -120,28 +102,19 @@ class Room4Class
 		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.Redy == true)
 		{
-<<<<<<< HEAD
 			console.log("1");
-=======
->>>>>>> 00b8289e9a5bf061aae696af5e0d715703dd45c3
 			this.start(4);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.client == null) 
 		{
-<<<<<<< HEAD
 			console.log("2");
-=======
->>>>>>> 00b8289e9a5bf061aae696af5e0d715703dd45c3
 			this.start(3);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.client == null && this.Socket4.client == null) 
 		{
-<<<<<<< HEAD
 			console.log("3");
-=======
->>>>>>> 00b8289e9a5bf061aae696af5e0d715703dd45c3
 			this.start(2);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.client == null &&

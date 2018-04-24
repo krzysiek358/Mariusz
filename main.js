@@ -111,7 +111,7 @@ server.on("connection", function(socket)
 				console.log("---------------------------");
 				console.log(value1);
 				console.log("---------------------------");
-				console.log(data);
+				console.log(code);
 
 				// for (var i = 0; i < TAblicaGier.length; i++)
 				// {

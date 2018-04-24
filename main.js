@@ -103,15 +103,11 @@ server.on("connection", function(socket)
 				break;
 
 			case "03":
-				value1 = [data.toString('utf8', 2, 5), data.toString('utf8', 5)];
+				value = [data.toString('utf8', 2, 5), data.toString('utf8', 5)];
 				console.log("03");
 				console.log("---------------------------");
-				value = data;
 				console.log(value);
-				console.log("---------------------------");
-				console.log(value1);
-				console.log("---------------------------");
-				console.log(code);
+
 
 				// for (var i = 0; i < TAblicaGier.length; i++)
 				// {

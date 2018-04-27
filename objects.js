@@ -57,6 +57,21 @@ class Room4Class
 			this.plansza[i] = Array(this.MapSize[1]);
 		}
 	}
+
+	which(socket)
+	{
+		switch
+		{
+			case this.Socket1.client.client:
+				return this.Socket1;
+			case this.Socket2.client.client:
+				return this.Socket2;
+			case this.Socket3.client.client:
+				return this.Socket3;
+			case this.Socket4.client.client:
+				return this.Socket4;
+		}
+	}
 	
 //	SrednicaOgona = 6; // px
 	start(players)
@@ -134,7 +149,8 @@ class Room4Class
 	{
 
 		this.plansza[x][y] = true;
-		var position = x.toString() + y.toString();
+		var roomSocket = which(socket);
+		var position = roomSocket.num.toString() + x.toString() + y.toString();
 		this.Socket1.client.client.write(position);
 		this.Socket2.client.client.write(position);
 		this.Socket3.client.client.write(position);

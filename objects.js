@@ -125,19 +125,19 @@ class Room4Class
 		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.Redy == true)
 		{
-			console.log("1");
+			console.log("4");
 			this.start(4);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.client == null) 
 		{
-			console.log("2");
+			console.log("3");
 			this.start(3);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.client == null && this.Socket4.client == null) 
 		{
-			console.log("3");
+			console.log("2");
 			this.start(2);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.client == null &&
@@ -159,10 +159,30 @@ class Room4Class
 		this.plansza[x][y] = true;
 		var roomSocket = this.which(socket);
 		var position = roomSocket.num.toString() + x.toString() + y.toString();
-		this.Socket1.client.client.write(position);
-		this.Socket2.client.client.write(position);
-		this.Socket3.client.client.write(position);
-		this.Socket4.client.client.write(position);
+		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
+		 this.Socket3.Redy == true && this.Socket4.Redy == true)
+		{
+			this.Socket1.client.client.write(position);
+			this.Socket2.client.client.write(position);
+			this.Socket3.client.client.write(position);
+			this.Socket4.client.client.write(position);
+		}
+		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
+		 this.Socket3.Redy == true && this.Socket4.client == null) 
+		{
+			this.Socket1.client.client.write(position);
+			this.Socket2.client.client.write(position);
+			this.Socket3.client.client.write(position);
+		}
+		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
+		 this.Socket3.client == null && this.Socket4.client == null) 
+		{
+			this.Socket1.client.client.write(position);
+			this.Socket2.client.client.write(position);
+		}
+		else
+			this.Socket1.client.client.write(position);
+
 	}
 
 	IsBusy(x, y, socket)

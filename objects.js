@@ -168,8 +168,8 @@ class Room4Class
 	IsBusy(x, y, socket)
 	{
 		console.log(";;;;;;;;;;;;;;;;;;;;;;");
-		console.log(x );
-		console.log(y );
+		console.log(x);
+		console.log(y);
 		if(this.plansza[x][y]==true)
 		{
 			if (this.Socket1.client.ip.address == socket.address().address)

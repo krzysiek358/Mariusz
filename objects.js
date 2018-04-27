@@ -60,7 +60,7 @@ class Room4Class
 
 	which(socket)
 	{
-		switch
+		switch(socket)
 		{
 			case this.Socket1.client.client:
 				return this.Socket1;
@@ -111,6 +111,7 @@ class Room4Class
 		}
 
 	}
+	
 	redy(socket)
 	{
 

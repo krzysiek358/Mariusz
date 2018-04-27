@@ -56,6 +56,13 @@ class Room4Class
 		{
 			this.plansza[i] = Array(this.MapSize[1]);
 		}
+		for (var i = 0; i < this.plansza.length; i++) 
+		{
+			for (var j = 0; j < this.plansza[i].length; j++) 
+			{
+				this.plansza[i][j] = false;
+			}
+		}
 	}
 
 	which(socket)
@@ -111,7 +118,7 @@ class Room4Class
 		}
 
 	}
-	
+
 	redy(socket)
 	{
 

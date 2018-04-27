@@ -134,34 +134,11 @@ class Room4Class
 	{
 
 		this.plansza[x][y] = true;
-		if (this.Socket1.client.client == socket)
-		{
-			var position = x.toString() + y.toString() + this.Socket1.client.name;
-			this.Socket2.client.client.write(position);
-			this.Socket3.client.client.write(position);
-			this.Socket4.client.client.write(position);
-		}
-		else if (this.Socket2.client == socket)
-		{
-			var position = x.toString() + y.toString() + this.Socket2.client.name;
-			this.Socket1.client.client.write(position);
-			this.Socket3.client.client.write(position);
-			this.Socket4.client.client.write(position);
-		}
-		else if (this.Socket3.client == socket)
-		{
-			var position = x.toString() + y.toString() + this.Socket3.client.name;
-			this.Socket1.client.client.write(position);
-			this.Socket2.client.client.write(position);
-			this.Socket4.client.client.write(position);
-		}
-		else
-		{
-			var position = x.toString() + y.toString() + this.Socket4.client.name;
-			this.Socket1.client.client.write(position);
-			this.Socket2.client.client.write(position);
-			this.Socket3.client.client.write(position);
-		}
+		var position = x.toString() + y.toString();
+		this.Socket1.client.client.write(position);
+		this.Socket2.client.client.write(position);
+		this.Socket3.client.client.write(position);
+		this.Socket4.client.client.write(position);
 	}
 
 	IsBusy(x, y, socket)

@@ -15,8 +15,6 @@ for (var i = TAblicaGier.length - 1; i >= 0; i--)
 var NotPlaying;
 
 
-//terminal.cli();
-
 
 server.on("connection", function(socket)
 {
@@ -109,41 +107,41 @@ server.on("connection", function(socket)
 				console.log(value);
 
 
-				// for (var i = 0; i < TAblicaGier.length; i++)
-				// {
-				// 	if(TAblicaGier[i].Socket1.client !== null)
-				// 	{
-				// 		if (socket == TAblicaGier[i].Socket1.client.client)
-				// 		{
-				// 			TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
-				// 			break;
-				// 		}
-				// 	}
-				// 	if(TAblicaGier[i].Socket2.client !== null)
-				// 	{
-				// 		if (socket == TAblicaGier[i].Socket2.client.client)
-				// 		{
-				// 			TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
-				// 			break;
-				// 		}
-				// 	}
-				// 	if(TAblicaGier[i].Socket3.client !== null)
-				// 	{
-				// 		if (socket == TAblicaGier[i].Socket3.client.client)
-				// 		{
-				// 			TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
-				// 			break;
-				// 		}
-				// 	}
-				// 	if(TAblicaGier[i].Socket4.client !== null)
-				// 	{
-				// 		if (socket == TAblicaGier[i].Socket4.client.client)
-				// 		{
-				// 			TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
-				// 			break;
-				// 		}
-				// 	}
-				// }
+				for (var i = 0; i < TAblicaGier.length; i++)
+				{
+					if(TAblicaGier[i].Socket1.client !== null)
+					{
+						if (socket == TAblicaGier[i].Socket1.client.client)
+						{
+							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+							break;
+						}
+					}
+					if(TAblicaGier[i].Socket2.client !== null)
+					{
+						if (socket == TAblicaGier[i].Socket2.client.client)
+						{
+							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+							break;
+						}
+					}
+					if(TAblicaGier[i].Socket3.client !== null)
+					{
+						if (socket == TAblicaGier[i].Socket3.client.client)
+						{
+							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+							break;
+						}
+					}
+					if(TAblicaGier[i].Socket4.client !== null)
+					{
+						if (socket == TAblicaGier[i].Socket4.client.client)
+						{
+							TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+							break;
+						}
+					}
+				}
 
 				break;
 

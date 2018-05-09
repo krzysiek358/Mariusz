@@ -2,18 +2,17 @@ const net = require('net');
 const matchmaking = require("./matchmakingModule.js");
 const objects = require("./objects.js");
 const terminal = require("./output.js");
-const util = require('util')
+const util = require('util');
 
 const server = net.createServer();
 var TablicaGraczy = [];
 var DoWylosowania = [];
 var TAblicaGier = [5];
-for (var i = TAblicaGier.length - 1; i >= 0; i--)
+for (var i = 0; i < TAblicaGier.length; i++)
 	TAblicaGier[i] = new objects.room4;
 
 
 var NotPlaying;
-
 
 
 server.on("connection", function(socket)
@@ -21,7 +20,7 @@ server.on("connection", function(socket)
 
 	TablicaGraczy.push(new objects.client(socket));
 
-	console.log("polonczono");
+	terminal.cli(0, null, null, TAblicaGier);
 
 
 
@@ -31,8 +30,7 @@ server.on("connection", function(socket)
 		var value;
 
 		socket.setKeepAlive(true);
-
-		console.log(code);
+		terminal.FirstRoom(TAblicaGier);
 
 		switch(code)
 		{
@@ -49,7 +47,8 @@ server.on("connection", function(socket)
 
 				}
 
-				console.log("dodano");
+				terminal.cli(1, value, null, TAblicaGier);
+
 				break;
 
 			case "02":
@@ -61,7 +60,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket1.client.ip)
 						{
 							TAblicaGier[i].Socket1.Redy = true;
-							console.log("1 Gotowosc zgloszona");
+							terminal.cli(2, 1, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}
@@ -71,7 +70,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket2.client.ip)
 						{
 							TAblicaGier[i].Socket2.Redy = true;
-							console.log("2 Gotowosc zgloszona");
+							terminal.cli(2, 2, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}
@@ -81,7 +80,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket3.client.ip)
 						{
 							TAblicaGier[i].Socket3.Redy = true;
-							console.log("3 Gotowosc zgloszona");
+							terminal.cli(2, 3, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}
@@ -91,7 +90,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket4.client.ip)
 						{
 							TAblicaGier[i].Socket4.Redy = true;
-							console.log("4 Gotowosc zgloszona");
+							terminal.cli(2, 4, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}
@@ -101,13 +100,27 @@ server.on("connection", function(socket)
 				break;
 
 			case "03":
-				value = [data.toString('utf8', 2, 5), data.toString('utf8', 5)];
-				console.log("03");
-				console.log("---------------------------");
-				console.log(value);
-				console.log("---------------------------");
-				console.log(data);
+				let x = null, y = null, last = null, sp = 0;
+				ToParse = data.toString('utf8', 2);
 
+				for (var i = ToParse.length; i >= 0; i--) 
+				{
+
+					if(ToParse[i] == " ")
+					{
+						if (y == null) 
+						{
+							last = i;
+							y = ToParse.substring(i + 1);
+						}
+						else
+							x = ToParse.substring(i + 1, last);
+						
+					}
+
+				}
+
+				value = [x, y];
 
 				for (var i = 0; i < TAblicaGier.length; i++)
 				{
@@ -145,6 +158,8 @@ server.on("connection", function(socket)
 					}
 				}
 
+				terminal.cli(3, value[0], value[1], TAblicaGier);
+
 				break;
 
 		}
@@ -165,8 +180,4 @@ server.listen(8081, function(){
 
 
 
-
-module.exports = {
-	Tab: TAblicaGier,
-}
 

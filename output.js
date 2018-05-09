@@ -31,15 +31,12 @@ function write(state, value1, value2, tab)
 	}
 	console.log("\n");
 
-	FirstRoom(null);
+	FirstRoom(tab);
+
 }
 
 function FirstRoom(tab)
 {
-	if(tab != null)
-		LastTab = tab;
-	else
-		tab = LastTab;
 
 	var room = tab[0];
 

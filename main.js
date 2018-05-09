@@ -1,7 +1,7 @@
 const net = require('net');
 const matchmaking = require("./matchmakingModule.js");
 const objects = require("./objects.js");
-const terminal = require("./output.js");
+//const terminal = require("./output.js");
 const util = require('util');
 
 const server = net.createServer();

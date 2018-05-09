@@ -30,7 +30,7 @@ server.on("connection", function(socket)
 		var value;
 
 		socket.setKeepAlive(true);
-		terminal.FirstRoom(TAblicaGier);
+		//terminal.FirstRoom(TAblicaGier);
 
 		switch(code)
 		{

@@ -170,23 +170,23 @@ class Room4Class
 		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.Redy == true)
 		{
-			this.Socket1.client.client.write(position);
-			this.Socket2.client.client.write(position);
-			this.Socket3.client.client.write(position);
-			this.Socket4.client.client.write(position);
+			if(socket != this.Socket1.client.client) this.Socket1.client.client.write(position);
+			if(socket != this.Socket2.client.client) this.Socket2.client.client.write(position);
+			if(socket != this.Socket3.client.client) this.Socket3.client.client.write(position);
+			if(socket != this.Socket4.client.client) this.Socket4.client.client.write(position);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.client == null) 
 		{
-			this.Socket1.client.client.write(position);
-			this.Socket2.client.client.write(position);
-			this.Socket3.client.client.write(position);
+			if(socket != this.Socket1.client.client) this.Socket1.client.client.write(position);
+			if(socket != this.Socket2.client.client) this.Socket2.client.client.write(position);
+			if(socket != this.Socket3.client.client) this.Socket3.client.client.write(position);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.client == null && this.Socket4.client == null) 
 		{
-			this.Socket1.client.client.write(position);
-			this.Socket2.client.client.write(position);
+			if(socket != this.Socket1.client.client) this.Socket1.client.client.write(position);
+			if(socket != this.Socket2.client.client) this.Socket2.client.client.write(position);
 		}
 		// else
 		// 	this.Socket1.client.client.write(position);

@@ -165,7 +165,6 @@ class Room4Class
 		var roomSocket = this.which(socket);
 		roomSocket.place = [x, y];
 		var position = `${roomSocket.num} ${x} ${y} `;
-		terminal.cli(100, position, null);
 
 
 		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&

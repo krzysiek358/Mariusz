@@ -158,7 +158,7 @@ server.on("connection", function(socket)
 					}
 				}
 
-				//terminal.cli(3, value[0], value[1], TAblicaGier);
+				terminal.cli(3, value[0], value[1], TAblicaGier);
 
 				break;
 

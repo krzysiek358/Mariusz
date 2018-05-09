@@ -34,7 +34,7 @@ function matchmaking(player, games)				//przydzielanie graczy
 			break;
 		}
 
-		terminal.cli( 100, games[i].Socket1.client, games[i].Socket2.client)
+		//terminal.cli( 100, games[i].Socket1.client, games[i].Socket2.client)
 	}
 }
 

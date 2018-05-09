@@ -20,7 +20,7 @@ server.on("connection", function(socket)
 
 	TablicaGraczy.push(new objects.client(socket));
 
-	terminal.cli(0, null, null, TAblicaGier);
+	//terminal.cli(0, null, null, TAblicaGier);
 
 
 
@@ -47,7 +47,7 @@ server.on("connection", function(socket)
 
 				}
 
-				terminal.cli(1, value, null, TAblicaGier);
+				//terminal.cli(1, value, null, TAblicaGier);
 
 				break;
 
@@ -60,7 +60,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket1.client.ip)
 						{
 							TAblicaGier[i].Socket1.Redy = true;
-							terminal.cli(2, 1, null, TAblicaGier);
+							//terminal.cli(2, 1, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}
@@ -70,7 +70,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket2.client.ip)
 						{
 							TAblicaGier[i].Socket2.Redy = true;
-							terminal.cli(2, 2, null, TAblicaGier);
+							//terminal.cli(2, 2, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}
@@ -80,7 +80,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket3.client.ip)
 						{
 							TAblicaGier[i].Socket3.Redy = true;
-							terminal.cli(2, 3, null, TAblicaGier);
+							//terminal.cli(2, 3, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}
@@ -90,7 +90,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket4.client.ip)
 						{
 							TAblicaGier[i].Socket4.Redy = true;
-							terminal.cli(2, 4, null, TAblicaGier);
+							//terminal.cli(2, 4, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}
@@ -158,7 +158,7 @@ server.on("connection", function(socket)
 					}
 				}
 
-				terminal.cli(3, value[0], value[1], TAblicaGier);
+				//terminal.cli(3, value[0], value[1], TAblicaGier);
 
 				break;
 

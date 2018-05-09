@@ -164,7 +164,7 @@ class Room4Class
 		this.plansza[x][y] = true;
 		var roomSocket = this.which(socket);
 		roomSocket.place = [x, y];
-		var position = `${roomSocket.num} ${x} ${y}`;
+		var position = `${roomSocket.num} ${x} ${y} `;
 		terminal.cli(100, position, null);
 
 

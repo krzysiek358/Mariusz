@@ -1,5 +1,6 @@
 const core = require('./main.js');
 
+var LastTab;
 
 
 function write(state, value1, value2, tab)
@@ -30,16 +31,16 @@ function write(state, value1, value2, tab)
 	}
 	console.log("\n");
 
-	FirstRoom(tab);
+	FirstRoom(null);
 }
-
-
-
-
-
 
 function FirstRoom(tab)
 {
+	if(tab != null)
+		LastTab = tab;
+	else
+		tab = LastTab;
+
 	var room = tab[0];
 
 	var out =

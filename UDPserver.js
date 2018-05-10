@@ -3,9 +3,6 @@ const dgram = require('dgram');
 var server = dgram.createSocket("udp4");
 const terminal = require("./output.js");
 
-server.bind(8082);
-server.setBroadcast(true);
-
 function SendBroadcast(IP, Content)
 {
 	server.send(Content, 8083, IP);
@@ -75,6 +72,11 @@ server.on('message', function(msg, socket)
 
 	terminal.cli(3, value[0], value[1], TAblicaGier);
 });
+
+
+server.bind(8082);
+server.setBroadcast(true);
+
 
 module.exports
 {

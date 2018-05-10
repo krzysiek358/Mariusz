@@ -11,7 +11,7 @@ function SendBroadcast(IP, Content)
 server.on('listening', function()
 {
 	server.setBroadcast(true);
-};
+});
 
 server.on('message', function(msg, socket)
 {

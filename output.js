@@ -1,4 +1,4 @@
-//const core = require('./main.js');
+
 
 var LastTab;
 

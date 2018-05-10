@@ -1,4 +1,5 @@
 //const terminal = require("./output.js");
+const UDP = require('UDPserver.js');
 
 class ClientClass
 {
@@ -170,23 +171,23 @@ class Room4Class
 		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.Redy == true)
 		{
-			if(socket != this.Socket1.client.client) this.Socket1.client.client.write(position);
-			if(socket != this.Socket2.client.client) this.Socket2.client.client.write(position);
-			if(socket != this.Socket3.client.client) this.Socket3.client.client.write(position);
-			if(socket != this.Socket4.client.client) this.Socket4.client.client.write(position);
+			if(socket.address != this.Socket1.client.ip) UDP.send(this.Socket1.client.ip, position);
+			if(socket.address != this.Socket2.client.ip) UDP.send(this.Socket2.client.ip, position);
+			if(socket.address != this.Socket3.client.ip) UDP.send(this.Socket3.client.ip, position);
+			if(socket.address != this.Socket4.client.ip) UDP.send(this.Socket4.client.ip, position);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.client == null) 
 		{
-			if(socket != this.Socket1.client.client) this.Socket1.client.client.write(position);
-			if(socket != this.Socket2.client.client) this.Socket2.client.client.write(position);
-			if(socket != this.Socket3.client.client) this.Socket3.client.client.write(position);
+			if(socket.address != this.Socket1.client.ip) UDP.send(this.Socket1.client.ip, position);
+			if(socket.address != this.Socket2.client.ip) UDP.send(this.Socket2.client.ip, position);
+			if(socket.address != this.Socket3.client.ip) UDP.send(this.Socket3.client.ip, position);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.client == null && this.Socket4.client == null) 
 		{
-			if(socket != this.Socket1.client.client) this.Socket1.client.client.write(position);
-			if(socket != this.Socket2.client.client) this.Socket2.client.client.write(position);
+			if(socket.address != this.Socket1.client.ip) UDP.send(this.Socket1.client.ip, position);
+			if(socket.address != this.Socket2.client.ip) UDP.send(this.Socket2.client.ip, position);
 		}
 		// else
 		// 	this.Socket1.client.client.write(position);

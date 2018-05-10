@@ -8,7 +8,7 @@ function SendBroadcast(IP, Content)
 	server.send(Content, 8083, IP);
 }
 
-server.on('listening', function)()
+server.on('listening', function()
 {
 	server.setBroadcast(true);
 };

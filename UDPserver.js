@@ -1,6 +1,7 @@
 var main = require('main.js');
 const dgram = require('dgram'); 
 var server = dgram.createSocket("udp4");
+const terminal = require("./output.js");
 
 server.bind(8082);
 server.setBroadcast(true);

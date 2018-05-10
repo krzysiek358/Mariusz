@@ -1,7 +1,7 @@
 const net = require('net');
 const matchmaking = require("./matchmakingModule.js");
 const objects = require("./objects.js");
-//const terminal = require("./output.js");
+const terminal = require("./output.js");
 const util = require('util');
 
 const server = net.createServer();
@@ -18,7 +18,7 @@ server.on("connection", function(socket)
 
 	TablicaGraczy.push(new objects.client(socket));
 
-	//terminal.cli(0, null, null, TAblicaGier);
+	terminal.cli(0, null, null, TAblicaGier);
 
 	socket.on("data", function(data)
 	{
@@ -43,7 +43,7 @@ server.on("connection", function(socket)
 
 				}
 
-				//terminal.cli(1, value, null, TAblicaGier);
+				terminal.cli(1, value, null, TAblicaGier);
 
 				break;
 
@@ -56,7 +56,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket1.client.ip)
 						{
 							TAblicaGier[i].Socket1.Redy = true;
-							//terminal.cli(2, 1, null, TAblicaGier);
+							terminal.cli(2, 1, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}
@@ -66,7 +66,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket2.client.ip)
 						{
 							TAblicaGier[i].Socket2.Redy = true;
-							//terminal.cli(2, 2, null, TAblicaGier);
+							terminal.cli(2, 2, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}
@@ -76,7 +76,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket3.client.ip)
 						{
 							TAblicaGier[i].Socket3.Redy = true;
-							//terminal.cli(2, 3, null, TAblicaGier);
+							terminal.cli(2, 3, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}
@@ -86,7 +86,7 @@ server.on("connection", function(socket)
 						if (socket.remoteAddress === TAblicaGier[i].Socket4.client.ip)
 						{
 							TAblicaGier[i].Socket4.Redy = true;
-							//terminal.cli(2, 4, null, TAblicaGier);
+							terminal.cli(2, 4, null, TAblicaGier);
 							TAblicaGier[i].redy();
 							break;
 						}

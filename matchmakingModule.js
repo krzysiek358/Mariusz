@@ -2,7 +2,7 @@ const net = require('net');
 const stream = require('stream');
 const fs = require('fs');
 const objects = require("./objects.js");
-//const terminal = require("./output.js");
+const terminal = require("./output.js");
 
 
 function matchmaking(player, games)				//przydzielanie graczy

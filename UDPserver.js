@@ -71,6 +71,8 @@ server.on('message', function(msg, socket)
 			}
 		}
 	}
+
+	terminal.cli(3, value[0], value[1], TAblicaGier);
 });
 
 module.exports

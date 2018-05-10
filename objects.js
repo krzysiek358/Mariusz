@@ -1,4 +1,4 @@
-//const terminal = require("./output.js");
+const terminal = require("./output.js");
 const UDP = require('UDPserver.js');
 
 class ClientClass

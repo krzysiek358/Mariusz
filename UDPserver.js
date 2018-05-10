@@ -8,6 +8,11 @@ function SendBroadcast(IP, Content)
 	server.send(Content, 8083, IP);
 }
 
+server.on('listening', function)()
+{
+	server.setBroadcast(true);
+};
+
 server.on('message', function(msg, socket)
 {
 	var TAblicaGier = main.TAblicaGier;
@@ -75,7 +80,6 @@ server.on('message', function(msg, socket)
 
 
 server.bind(8082);
-server.setBroadcast(true);
 
 
 module.exports

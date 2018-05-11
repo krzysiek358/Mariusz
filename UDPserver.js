@@ -6,8 +6,12 @@ const terminal = require("./output.js");
 function SendBroadcast(IP, Content)
 {
 	console.log(typeof(Content));
-	var message = Buffer.from(Content);
-	server.send(message, 8083, IP);
+	if(Content != undefined)
+	{
+		var message = Buffer.from(Content);
+		server.send(message, 8083, IP);
+	}
+	
 }
 
 server.on('listening', function()

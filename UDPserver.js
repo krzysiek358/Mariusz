@@ -6,11 +6,9 @@ const terminal = require("./output.js");
 function SendBroadcast(IP, Content)
 {
 	console.log(typeof(Content));
-	if(Content != undefined)
-	{
-		var message = Buffer.from(Content);
-		server.send(message, 8083, IP);
-	}
+
+	var message = Buffer.from(Content);
+	server.send(message, 8083, IP);
 	
 }
 
@@ -90,7 +88,7 @@ server.bind(8082);
 
 module.exports
 {
-	send: SendBroadcast()
+	send: SendBroadcast
 }
 
 

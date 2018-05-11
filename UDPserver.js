@@ -5,6 +5,7 @@ const terminal = require("./output.js");
 
 function SendBroadcast(IP, Content)
 {
+	console.log(typeof(Content));
 	var message = Buffer.from(Content);
 	server.send(message, 8083, IP);
 }

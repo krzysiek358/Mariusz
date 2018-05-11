@@ -19,6 +19,7 @@ server.on('listening', function()
 
 server.on('message', function(msg, socket)
 {
+	console.log("jest");
 	var TAblicaGier = main.TAblicaGier;
 
 	let x = null, y = null, last = null, sp = 0;

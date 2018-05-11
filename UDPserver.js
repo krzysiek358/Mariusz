@@ -22,7 +22,7 @@ server.on('message', function(msg, socket)
 	var TAblicaGier = main.TAblicaGier;
 
 	let x = null, y = null, last = null, sp = 0;
-	ToParse = msg.toString('utf8', 2);
+	var ToParse = msg.toString('utf8', 2);
 
 	for (var i = ToParse.length; i >= 0; i--) 
 	{

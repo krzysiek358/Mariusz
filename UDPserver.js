@@ -5,7 +5,8 @@ const terminal = require("./output.js");
 
 function SendBroadcast(IP, Content)
 {
-	server.send(Buffer.from(Content), 8083, IP);
+	var message = Buffer.from(Content);
+	server.send(message, 8083, IP);
 }
 
 server.on('listening', function()

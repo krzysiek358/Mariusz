@@ -21,7 +21,7 @@ server.on('message', function(msg, socket)
 	let x = null, y = null, rotation = null, sp = 0, last = null;
 	var ToParse = msg.toString('utf8');
 
-	for (var i = ToParse.length; i >= 0; i--) 
+	for (var i = ToParse.length - 1; i >= 0; i--) 
 	{
 		if(ToParse[i] == " " && sp == 0)
 		{
@@ -34,8 +34,6 @@ server.on('message', function(msg, socket)
 			y = ToParse.substring(i, last);
 			x = ToParse.substring(0, i);
 			sp = 0;
-			console.log(x);
-			console.log(y);
 		}
 	}
 

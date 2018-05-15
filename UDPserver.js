@@ -24,10 +24,6 @@ server.on('message', function(msg, socket)
 
 	for (var i = ToParse.length - 1; i >= 0; i--) 
 	{
-		console.log(ToParse);
-		console.log(x);
-		console.log(y);
-		console.log(rotation);
 
 		if(ToParse[i] == " " && sp == 0)
 		{
@@ -38,9 +34,10 @@ server.on('message', function(msg, socket)
 
 		else if(ToParse[i] == " " && sp == 1)
 		{
-			y = ToParse.substring(i + 1, last - 1);
-			x = ToParse.substring(0, i - 1);
+			y = ToParse.substring(i + 1, last);
+			x = ToParse.substring(0, i);
 			sp = 0;
+			break;
 		}
 	}
 

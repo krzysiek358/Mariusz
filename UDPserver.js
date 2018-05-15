@@ -34,6 +34,8 @@ server.on('message', function(msg, socket)
 			y = ToParse.substring(i, last);
 			x = ToParse.substring(0, i);
 			sp = 0;
+			console.log(x);
+			console.log(y);
 		}
 	}
 

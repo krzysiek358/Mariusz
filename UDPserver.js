@@ -1,15 +1,14 @@
-var main = require('./main.js');
+var objects = require("./objects.js");
 const dgram = require('dgram'); 
+var terminal = require("./output.js");
+var variables = require('./var.js');
+
 var server = dgram.createSocket("udp4");
-const terminal = require("./output.js");
 
 function SendBroadcast(IP, Content)
 {
-	console.log(typeof(Content));
-
 	var message = Buffer.from(Content);
 	server.send(message, 8083, IP);
-	
 }
 
 server.on('listening', function()
@@ -19,75 +18,71 @@ server.on('listening', function()
 
 server.on('message', function(msg, socket)
 {
-	console.log("jest");
-	var TAblicaGier = main.TAblicaGier;
-
-	let x = null, y = null, last = null, sp = 0;
-	var ToParse = msg.toString('utf8', 2);
+	let x = null, y = null, rotation = null, sp = 0, last = null;
+	var ToParse = msg.toString('utf8');
 
 	for (var i = ToParse.length; i >= 0; i--) 
 	{
-
-		if(ToParse[i] == " ")
+		if(ToParse[i] == " " && sp == 0)
 		{
-			if (y == null) 
-			{
-				last = i;
-				y = ToParse.substring(i + 1);
-			}
-			else
-				x = ToParse.substring(i + 1, last);
-			
+			rotation = ToParse.substring(i + 1);
+			sp = 1;
+			last = i;
 		}
-
+		else if(ToParse[i] == " " && sp == 1)
+		{
+			y = ToParse.substring(i, last);
+			x = ToParse.substring(0, i);
+			sp = 0;
+		}
 	}
 
 	value = [x, y];
 
-	for (var i = 0; i < TAblicaGier.length; i++)
+	for (var i = 0; i < variables.TAblicaGier.length; i++)
 	{
-		if(TAblicaGier[i].Socket1.client !== null)
+		if(variables.TAblicaGier[i].Socket1.client !== null)
 		{
-			if (socket == TAblicaGier[i].Socket1.client.client)
+			if (socket.address == variables.TAblicaGier[i].Socket1.client.ip)
 			{
-				TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+				variables.TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket.address, parseInt(rotation));
 				break;
 			}
 		}
-		if(TAblicaGier[i].Socket2.client !== null)
+		if(variables.TAblicaGier[i].Socket2.client !== null)
 		{
-			if (socket == TAblicaGier[i].Socket2.client.client)
+			if (socket.address == variables.TAblicaGier[i].Socket2.client.ip)
 			{
-				TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+				variables.TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket.address, parseInt(rotation));
 				break;
 			}
 		}
-		if(TAblicaGier[i].Socket3.client !== null)
+		if(variables.TAblicaGier[i].Socket3.client !== null)
 		{
-			if (socket == TAblicaGier[i].Socket3.client.client)
+			if (socket.address == variables.TAblicaGier[i].Socket3.client.ip)
 			{
-				TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+				variables.TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket.address, parseInt(rotation));
 				break;
 			}
 		}
-		if(TAblicaGier[i].Socket4.client !== null)
+		if(variables.TAblicaGier[i].Socket4.client !== null)
 		{
-			if (socket == TAblicaGier[i].Socket4.client.client)
+			if (socket.address == variables.TAblicaGier[i].Socket4.client.ip)
 			{
-				TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket);
+				variables.TAblicaGier[i].IsBusy(parseInt(value[0]), parseInt(value[1]), socket.address, parseInt(rotation));
 				break;
 			}
 		}
 	}
 
-	terminal.cli(3, value[0], value[1], TAblicaGier);
+	terminal.cli(3, value[0], value[1], variables.TAblicaGier);
 });
 
 
 server.bind(8082);
 
 
-module.exports
+module.exports =
 {
 	send: SendBroadcast
 }

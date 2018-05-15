@@ -1,17 +1,18 @@
+var objects = require("./objects.js");
 const net = require('net');
-const matchmaking = require("./matchmakingModule.js");
-const objects = require("./objects.js");
-const terminal = require("./output.js");
+var matchmaking = require("./matchmakingModule.js");
+var terminal = require("./output.js");
 const util = require('util');
+var variables = require('./var.js');
 
 const server = net.createServer();
-var TablicaGraczy = [];
-var DoWylosowania = [];
-var TAblicaGier = [5];
+var TablicaGraczy = variables.TablicaGraczy;
+var DoWylosowania = variables.DoWylosowania;
+var TAblicaGier = variables.TAblicaGier;
+var NotPlaying;
+
 for (var i = 0; i < TAblicaGier.length; i++)
 	TAblicaGier[i] = new objects.room4;
-
-var NotPlaying;
 
 server.on("connection", function(socket)
 {
@@ -26,7 +27,6 @@ server.on("connection", function(socket)
 		var value;
 
 		socket.setKeepAlive(true);
-		//terminal.FirstRoom(TAblicaGier);
 
 		switch(code)
 		{
@@ -48,12 +48,15 @@ server.on("connection", function(socket)
 				break;
 
 			case "02":
+				var ip;
+				if (socket.remoteAddress.substr(0, 7) == '::ffff:')
+					ip = socket.remoteAddress.substr(7);
+					
 				for (var i = 0; i < TAblicaGier.length; i++)
 				{
 					if(TAblicaGier[i].Socket1.client !== null)
 					{
-						console.log(util.inspect(TAblicaGier[i].Socket1.client.ip, false, null));
-						if (socket.remoteAddress === TAblicaGier[i].Socket1.client.ip)
+						if (ip === TAblicaGier[i].Socket1.client.ip)
 						{
 							TAblicaGier[i].Socket1.Redy = true;
 							terminal.cli(2, 1, null, TAblicaGier);
@@ -63,7 +66,7 @@ server.on("connection", function(socket)
 					}
 					if(TAblicaGier[i].Socket2.client !== null)
 					{
-						if (socket.remoteAddress === TAblicaGier[i].Socket2.client.ip)
+						if (ip === TAblicaGier[i].Socket2.client.ip)
 						{
 							TAblicaGier[i].Socket2.Redy = true;
 							terminal.cli(2, 2, null, TAblicaGier);
@@ -73,7 +76,7 @@ server.on("connection", function(socket)
 					}
 					if(TAblicaGier[i].Socket3.client !== null)
 					{
-						if (socket.remoteAddress === TAblicaGier[i].Socket3.client.ip)
+						if (ip === TAblicaGier[i].Socket3.client.ip)
 						{
 							TAblicaGier[i].Socket3.Redy = true;
 							terminal.cli(2, 3, null, TAblicaGier);
@@ -83,7 +86,7 @@ server.on("connection", function(socket)
 					}
 					if(TAblicaGier[i].Socket4.client !== null)
 					{
-						if (socket.remoteAddress === TAblicaGier[i].Socket4.client.ip)
+						if (ip === TAblicaGier[i].Socket4.client.ip)
 						{
 							TAblicaGier[i].Socket4.Redy = true;
 							terminal.cli(2, 4, null, TAblicaGier);
@@ -103,10 +106,6 @@ server.listen(8081, function(){
 
 });
 
-module.exports
-{
-	TAblicaGier: TAblicaGier
-}
 
 
 

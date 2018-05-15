@@ -31,8 +31,8 @@ server.on('message', function(msg, socket)
 		}
 		else if(ToParse[i] == " " && sp == 1)
 		{
-			y = ToParse.substring(i, last);
-			x = ToParse.substring(0, i);
+			y = ToParse.substring(i + 1, last - 1);
+			x = ToParse.substring(0, i - 1);
 			sp = 0;
 		}
 	}

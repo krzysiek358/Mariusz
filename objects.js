@@ -169,10 +169,10 @@ class Room4Class
 	PositionFree(x, y, socket, rotation)
 	{
 		var p = this.plansza;
-		setTimeout( function ()
-		{
-			Keep(x, y, p)
-		}, 600);
+		// setTimeout( function ()
+		// {
+		// 	Keep(x, y, p)
+		// }, 500);
 		
 		var roomSocket = this.which(socket);
 		roomSocket.place = [x, y];
@@ -234,8 +234,6 @@ class Room4Class
 
 	IsBusy(x, y, socket, rotation)
 	{
-		console.log(x);
-		console.log(y);
 		if(this.plansza[x][y] == true)
 		{
 			if (this.Socket1.client.ip == socket)

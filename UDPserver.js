@@ -8,7 +8,10 @@ var server = dgram.createSocket("udp4");
 function SendBroadcast(IP, Content)
 {
 	var message = Buffer.from(Content);
-	console.log(server.send(message, 8083, IP));
+	server.send(message, 8083, IP, function(err)
+	{
+		console.log(err);
+	});
 }
 
 server.on('listening', function()

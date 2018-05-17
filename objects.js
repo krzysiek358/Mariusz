@@ -169,10 +169,10 @@ class Room4Class
 	PositionFree(x, y, socket, rotation)
 	{
 		var p = this.plansza;
-		// setTimeout( function ()
-		// {
-		// 	Keep(x, y, p)
-		// }, 500);
+		setTimeout( function ()
+		{
+			Keep(x, y, p)
+		}, 500);
 		
 		var roomSocket = this.which(socket);
 		roomSocket.place = [x, y];
@@ -197,6 +197,8 @@ class Room4Class
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.client == null && this.Socket4.client == null) 
 		{
+			console.log(Socket1.client.ip);
+			console.log(Socket2.client.ip);
 			UDP.send(this.Socket1.client.ip, position);
 			UDP.send(this.Socket2.client.ip, position);
 		}

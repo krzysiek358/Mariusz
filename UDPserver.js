@@ -4,7 +4,6 @@ var terminal = require("./output.js");
 var variables = require('./var.js');
 
 var server = dgram.createSocket("udp4");
-server.setTTL(255);
 
 function SendBroadcast(IP, Content)
 {
@@ -21,6 +20,8 @@ function SendBroadcast(IP, Content)
 server.on('listening', function()
 {
 	server.setBroadcast(true);
+	server.setSendBufferSize(16);
+	server.setTTL(255);
 });
 
 server.on('message', function(msg, socket)

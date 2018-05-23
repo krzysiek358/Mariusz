@@ -144,20 +144,20 @@ class Room4Class
 		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.Redy == true)
 		{
-			console.log("4");
 			this.start(4);
+			this.active = true;
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.client == null) 
 		{
-			console.log("3");
 			this.start(3);
+			this.active = true;
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.client == null && this.Socket4.client == null) 
 		{
-			console.log("2");
 			this.start(2);
+			this.active = true;
 		}
 
 	}

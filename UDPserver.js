@@ -12,8 +12,10 @@ function SendBroadcast(IP, Content)
 	{
 		if(err)
 			console.log(err);
-
+		
+		console.log(Content);
 		console.log(message);
+		console.log(IP);
 	});
 }
 

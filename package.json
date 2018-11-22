@@ -1,0 +1,19 @@
+{
+  "name": "mariusz",
+  "version": "1.0.0",
+  "description": "Mariusz",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krzysiek358/Mariusz.git"
+  },
+  "author": "Krzysztof Stokop",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krzysiek358/Mariusz/issues"
+  },
+  "homepage": "https://github.com/krzysiek358/Mariusz#readme"
+}

@@ -1,17 +1,18 @@
-var objects = require("./objects.js");
+const objects = require("./objects.js");
 const net = require('net');
-var matchmaking = require("./matchmakingModule.js");
-var terminal = require("./output.js");
+const matchmaking = require("./matchmakingModule.js");
+const terminal = require("./output.js");
 const util = require('util');
-var variables = require('./var.js');
+const variables = require('./var.js');
 
 const server = net.createServer();
-var TablicaGraczy = variables.TablicaGraczy;
-var DoWylosowania = variables.DoWylosowania;
-var TAblicaGier = variables.TAblicaGier;
-var NotPlaying;
 
-for (var i = 0; i < TAblicaGier.length; i++)
+let TablicaGraczy = variables.TablicaGraczy;
+let DoWylosowania = variables.DoWylosowania;
+let TAblicaGier = variables.TAblicaGier;
+let NotPlaying;
+
+for (let i = 0; i < TAblicaGier.length; i++)
 	TAblicaGier[i] = new objects.room4;
 
 server.on("connection", function(socket)
@@ -23,8 +24,8 @@ server.on("connection", function(socket)
 
 	socket.on("data", function(data)
 	{
-		var code = data.toString('utf8', 0, 2);
-		var value;
+		let code = data.toString('utf8', 0, 2);
+		let value;
 
 		socket.setKeepAlive(true);
 
@@ -33,7 +34,7 @@ server.on("connection", function(socket)
 			case "01": //conected
 				value = data.toString('utf8', 2);
 
-				for (var i = TablicaGraczy.length - 1; i >= 0; i--)
+				for (let i = TablicaGraczy.length - 1; i >= 0; i--)
 				{
 					if(TablicaGraczy[i].client == socket)
 					{
@@ -48,11 +49,11 @@ server.on("connection", function(socket)
 				break;
 
 			case "02":
-				var ip;
+				let ip;
 				if (socket.remoteAddress.substr(0, 7) == '::ffff:')
 					ip = socket.remoteAddress.substr(7);
-					
-				for (var i = 0; i < TAblicaGier.length; i++)
+
+				for (let i = 0; i < TAblicaGier.length; i++)
 				{
 					if(TAblicaGier[i].Socket1.client !== null)
 					{
@@ -95,7 +96,7 @@ server.on("connection", function(socket)
 						}
 					}
 				}
-				
+
 				break;
 		}
 	});
@@ -105,8 +106,3 @@ server.listen(8081, function(){
 	console.log("port: 8081, nasluch ");
 
 });
-
-
-
-
-

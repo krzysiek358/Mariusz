@@ -7,7 +7,7 @@ const terminal = require("./output.js");
 
 function matchmaking(player, games)				//przydzielanie graczy
 {
-	for (var i = 0; i < games.length; i++) 
+	for (let i = 0; i < games.length; i++) 
 	{
 
 		if(games[i].Socket1.client == null)

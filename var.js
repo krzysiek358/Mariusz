@@ -1,8 +1,8 @@
-var TablicaGraczy = [];
-var DoWylosowania = [];
-var TAblicaGier = [5];
+let TablicaGraczy = [];
+let DoWylosowania = [];
+let TAblicaGier = [5];
 
-module.exports = 
+module.exports =
 {
 	TablicaGraczy: TablicaGraczy,
 	DoWylosowania: DoWylosowania,

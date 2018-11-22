@@ -1,6 +1,6 @@
 
 
-var LastTab;
+let LastTab;
 
 
 function write(state, value1, value2, tab)
@@ -38,28 +38,28 @@ function write(state, value1, value2, tab)
 function FirstRoom(tab)
 {
 
-	// var room = tab[0];
+	// let room = tab[0];
 
-	// var out =
+	// let out =
 	// {
-	// 	Room: 
+	// 	Room:
 	// 		`Status pokoju: ${room.active}`,
-	// 	Player1: 
+	// 	Player1:
 	// 	`    Status: ${(room.Socket1.client == null) ? 'NULL' : 'Online'}
 	// 	   Gotowość: ${room.Socket1.Redy}
 	// 	      X / Y: ${room.Socket1.place[0]} / ${room.Socket1.place[1]}
 	// 	         IP: ${(room.Socket1.client == null) ? 'NULL' : room.Socket1.client.ip}`,
-	// 	Player2: 
+	// 	Player2:
 	// 	`	 Status: ${(room.Socket2.client == null) ? 'NULL' : 'Online'}
 	// 	   Gotowość: ${room.Socket2.Redy}
 	// 	      X / Y: ${room.Socket2.place[0]} / ${room.Socket2.place[1]}
 	// 	         IP: ${(room.Socket2.client == null) ? 'NULL' : room.Socket2.client.ip}`,
-	// 	Player3: 
+	// 	Player3:
 	// 	`	 Status: ${(room.Socket3.client == null) ? 'NULL' : 'Online'}
 	// 	   Gotowość: ${room.Socket3.Redy}
 	// 	      X / Y: ${room.Socket3.place[0]} / ${room.Socket3.place[1]}
 	// 	         IP: ${(room.Socket3.client == null) ? 'NULL' : room.Socket3.client.ip}`,
-	// 	Player4: 
+	// 	Player4:
 	// 	`	 Status: ${(room.Socket4.client == null) ? 'NULL' : 'Online'}
 	// 	   Gotowość: ${room.Socket4.Redy}
 	// 	      X / Y: ${room.Socket4.place[0]} / ${room.Socket4.place[1]}
@@ -80,7 +80,7 @@ function FirstRoom(tab)
 }
 
 
-module.exports = 
+module.exports =
 {
     cli: write,
     FirstRoom: FirstRoom

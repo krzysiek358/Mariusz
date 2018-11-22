@@ -1,18 +1,18 @@
-var objects = require("./objects.js");
-const dgram = require('dgram'); 
-var terminal = require("./output.js");
-var variables = require('./var.js');
+const objects = require("./objects.js");
+const dgram = require('dgram');
+const terminal = require("./output.js");
+const variables = require('./var.js');
 
-var server = dgram.createSocket("udp4");
+let server = dgram.createSocket("udp4");
 
 function SendBroadcast(IP, Content)
 {
-	var message = Buffer.from(Content);
+	let message = Buffer.from(Content);
 	server.send(message, 0, 16, 8083, IP, function(err)
 	{
 		if(err)
 			console.log(err);
-		
+
 		console.log(Content);
 		console.log(message);
 		console.log(IP);
@@ -29,10 +29,10 @@ server.on('listening', function()
 server.on('message', function(msg, socket)
 {
 	let x = null, y = null, rotation = null, sp = 0, last = null;
-	var ToParse = msg.toString('utf8');
+	let ToParse = msg.toString('utf8');
 
 
-	for (var i = ToParse.length - 1; i >= 0; i--) 
+	for (let i = ToParse.length - 1; i >= 0; i--)
 	{
 
 		if(ToParse[i] == " " && sp == 0)
@@ -53,7 +53,7 @@ server.on('message', function(msg, socket)
 
 	value = [x, y];
 
-	for (var i = 0; i < variables.TAblicaGier.length; i++)
+	for (let i = 0; i < variables.TAblicaGier.length; i++)
 	{
 		if(variables.TAblicaGier[i].Socket1.client !== null)
 		{
@@ -100,5 +100,3 @@ module.exports =
 {
 	send: SendBroadcast
 }
-
-

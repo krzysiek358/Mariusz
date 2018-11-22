@@ -1,6 +1,6 @@
-var terminal = require("./output.js");
-var UDP = require('./UDPserver.js');
-var variables = require('./var.js');
+let terminal = require("./output.js");
+let UDP = require('./UDPserver.js');
+let variables = require('./var.js');
 
 function Keep(x, y, plansza)
 {
@@ -71,13 +71,13 @@ class Room4Class
 		this.TablicaWynikow = Array(4);
 		this.MapSize = [801, 601];
 		this.plansza = Array(this.MapSize[0]);
-		for (var i = 0; i < this.plansza.length; i++)
+		for (let i = 0; i < this.plansza.length; i++)
 		{
 			this.plansza[i] = Array(this.MapSize[1]);
 		}
-		for (var i = 0; i < this.plansza.length; i++) 
+		for (let i = 0; i < this.plansza.length; i++)
 		{
-			for (var j = 0; j < this.plansza[i].length; j++) 
+			for (let j = 0; j < this.plansza[i].length; j++)
 			{
 				this.plansza[i][j] = false;
 			}
@@ -98,42 +98,141 @@ class Room4Class
 				return this.Socket4;
 		}
 	}
-	
+
 //	SrednicaOgona = 6; // px
 	start(players)
 	{
 		if (players == 4)
 		{
-			this.Socket1.client.client.write(Buffer.from(this.MapSize[0].toString() + " " + this.MapSize[1].toString() + " " + this.Socket1.MiejsceStartowe[0].toString() 
-			 + " " + this.Socket1.MiejsceStartowe[1].toString() + " " + this.Socket1.Kierunek.toString()+ " " + players.toString() + " " + this.Socket1.num.toString()), 'utf8');
+			this.Socket1.client.client.write
+			(
+				 Buffer.from
+				 (
+							 this.MapSize[0].toString() + " "
+						 + this.MapSize[1].toString() + " "
+						 + this.Socket1.MiejsceStartowe[0].toString() + " "
+						 + this.Socket1.MiejsceStartowe[1].toString() + " "
+						 + this.Socket1.Kierunek.toString() + " "
+						 + players.toString() + " "
+						 + this.Socket1.num.toString()
+			 	)
+			, 'utf8');
 
-			this.Socket2.client.client.write(Buffer.from(this.MapSize[0].toString() + " " + this.MapSize[1].toString() + " " + this.Socket2.MiejsceStartowe[0].toString() 
-			 + " " + this.Socket2.MiejsceStartowe[1].toString() + " " + this.Socket2.Kierunek.toString()+ " " + players.toString() + " " + this.Socket2.num.toString()), 'utf8');
+			this.Socket2.client.client.write
+			(
+					Buffer.from
+					(
+								this.MapSize[0].toString() + " "
+							+ this.MapSize[1].toString() + " "
+							+ this.Socket2.MiejsceStartowe[0].toString() + " "
+							+ this.Socket2.MiejsceStartowe[1].toString() + " "
+							+ this.Socket2.Kierunek.toString() + " "
+							+ players.toString() + " "
+							+ this.Socket2.num.toString()
+					)
+			, 'utf8');
 
-			this.Socket3.client.client.write(Buffer.from(this.MapSize[0].toString() + " " + this.MapSize[1].toString() + " " + this.Socket3.MiejsceStartowe[0].toString()
-			 + " " + this.Socket3.MiejsceStartowe[1].toString() + " " + this.Socket3.Kierunek.toString()+ " " + players.toString() + " " + this.Socket3.num.toString()), 'utf8');
+			this.Socket3.client.client.write
+			(
+					Buffer.from
+					(
+								this.MapSize[0].toString() + " "
+							+ this.MapSize[1].toString() + " "
+							+ this.Socket3.MiejsceStartowe[0].toString() + " "
+							+ this.Socket3.MiejsceStartowe[1].toString() + " "
+							+ this.Socket3.Kierunek.toString() + " "
+							+ players.toString() + " "
+							+ this.Socket3.num.toString()
+					)
+			, 'utf8');
 
-			this.Socket4.client.client.write(Buffer.from(this.MapSize[0].toString() + " " + this.MapSize[1].toString() + " " + this.Socket4.MiejsceStartowe[0].toString()
-			 + " " + this.Socket4.MiejsceStartowe[1].toString() + " " + this.Socket4.Kierunek.toString()+ " " + players.toString() + " " + this.Socket4.num.toString()), 'utf8');
+			this.Socket4.client.client.write
+			(
+					Buffer.from
+					(
+								this.MapSize[0].toString() + " "
+							+ this.MapSize[1].toString() + " "
+							+ this.Socket4.MiejsceStartowe[0].toString() + " "
+							+ this.Socket4.MiejsceStartowe[1].toString() + " "
+							+ this.Socket4.Kierunek.toString() + " "
+							+ players.toString() + " "
+							+ this.Socket4.num.toString()
+					)
+			, 'utf8');
 		}
 		else if (players == 3)
 		{
-			this.Socket1.client.client.write(Buffer.from(this.MapSize[0].toString() + " " + this.MapSize[1].toString() + " " + this.Socket1.MiejsceStartowe[0].toString()
-			 + " " + this.Socket1.MiejsceStartowe[1].toString() + " " + this.Socket1.Kierunek.toString()+ " " + players.toString() + " " + this.Socket1.num.toString()), 'utf8');
+			this.Socket1.client.client.write
+			(
+					Buffer.from
+					(
+								this.MapSize[0].toString() + " "
+							+ this.MapSize[1].toString() + " "
+							+ this.Socket1.MiejsceStartowe[0].toString() + " "
+							+ this.Socket1.MiejsceStartowe[1].toString() + " "
+							+ this.Socket1.Kierunek.toString() + " "
+							+ players.toString() + " "
+							+ this.Socket1.num.toString()
+					)
+			, 'utf8');
 
-			this.Socket2.client.client.write(Buffer.from(this.MapSize[0].toString() + " " + this.MapSize[1].toString() + " " + this.Socket2.MiejsceStartowe[0].toString()
-			 + " " + this.Socket2.MiejsceStartowe[1].toString() + " " + this.Socket2.Kierunek.toString()+ " " + players.toString() + " " + this.Socket2.num.toString()), 'utf8');
+			this.Socket2.client.client.write
+			(
+					Buffer.from
+					(
+								this.MapSize[0].toString() + " "
+							+ this.MapSize[1].toString() + " "
+							+ this.Socket2.MiejsceStartowe[0].toString() + " "
+							+ this.Socket2.MiejsceStartowe[1].toString() + " "
+							+ this.Socket2.Kierunek.toString() + " "
+							+ players.toString() + " "
+							+ this.Socket2.num.toString()
+					)
+			, 'utf8');
 
-			this.Socket3.client.client.write(Buffer.from(this.MapSize[0].toString() + " " + this.MapSize[1].toString() + " " + this.Socket3.MiejsceStartowe[0].toString()
-			 + " " + this.Socket3.MiejsceStartowe[1].toString() + " " + this.Socket3.Kierunek.toString()+ " " + players.toString() + " " + this.Socket3.num.toString()), 'utf8');
+			this.Socket3.client.client.write
+			(
+					Buffer.from
+					(
+								this.MapSize[0].toString() + " "
+							+ this.MapSize[1].toString() + " "
+							+ this.Socket3.MiejsceStartowe[0].toString() + " "
+							+ this.Socket3.MiejsceStartowe[1].toString() + " "
+							+ this.Socket3.Kierunek.toString() + " "
+							+ players.toString() + " "
+							+ this.Socket3.num.toString()
+					)
+			, 'utf8');
 		}
 		else if (players == 2)
 		{
-			this.Socket1.client.client.write(Buffer.from(this.MapSize[0].toString() + " " + this.MapSize[1].toString() + " " + this.Socket1.MiejsceStartowe[0].toString()
-			 + " " + this.Socket1.MiejsceStartowe[1].toString() + " " + this.Socket1.Kierunek.toString()+ " " + players.toString() + " " + this.Socket1.num.toString()), 'utf8');
+			this.Socket1.client.client.write
+			(
+					Buffer.from
+					(
+								this.MapSize[0].toString() + " "
+							+ this.MapSize[1].toString() + " "
+							+ this.Socket1.MiejsceStartowe[0].toString() + " "
+							+ this.Socket1.MiejsceStartowe[1].toString() + " "
+							+ this.Socket1.Kierunek.toString() + " "
+							+ players.toString() + " "
+							+ this.Socket1.num.toString()
+					)
+			, 'utf8');
 
-			this.Socket2.client.client.write(Buffer.from(this.MapSize[0].toString() + " " + this.MapSize[1].toString() + " " + this.Socket2.MiejsceStartowe[0].toString()
-			 + " " + this.Socket2.MiejsceStartowe[1].toString() + " " + this.Socket2.Kierunek.toString()+ " " + players.toString() + " " + this.Socket2.num.toString()), 'utf8');
+			this.Socket2.client.client.write
+			(
+					Buffer.from
+					(
+								this.MapSize[0].toString() + " "
+							+ this.MapSize[1].toString() + " "
+							+ this.Socket2.MiejsceStartowe[0].toString() + " "
+							+ this.Socket2.MiejsceStartowe[1].toString() + " "
+							+ this.Socket2.Kierunek.toString() + " "
+							+ players.toString() + " "
+							+ this.Socket2.num.toString()
+					)
+			, 'utf8');
 		}
 
 	}
@@ -148,13 +247,13 @@ class Room4Class
 			this.active = true;
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
-		 this.Socket3.Redy == true && this.Socket4.client == null) 
+		 this.Socket3.Redy == true && this.Socket4.client == null)
 		{
 			this.start(3);
 			this.active = true;
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
-		 this.Socket3.client == null && this.Socket4.client == null) 
+		 this.Socket3.client == null && this.Socket4.client == null)
 		{
 			this.start(2);
 			this.active = true;
@@ -168,16 +267,16 @@ class Room4Class
 
 	PositionFree(x, y, socket, rotation)
 	{
-		var p = this.plansza;
+		let p = this.plansza;
 		setTimeout( function ()
 		{
 			Keep(x, y, p)
 		}, 500);
-		
-		var roomSocket = this.which(socket);
+
+		let roomSocket = this.which(socket);
 		roomSocket.place = [x, y];
 		roomSocket.rotation = rotation;
-		var position = `${roomSocket.num} ${x} ${y} ${roomSocket.rotation} 1 `;
+		let position = `${roomSocket.num} ${x} ${y} ${roomSocket.rotation} 1 `;
 
 		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.Redy == true)
@@ -188,14 +287,14 @@ class Room4Class
 			UDP.send(this.Socket4.client.ip, position);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
-		 this.Socket3.Redy == true && this.Socket4.client == null) 
+		 this.Socket3.Redy == true && this.Socket4.client == null)
 		{
 			UDP.send(this.Socket1.client.ip, position);
 			UDP.send(this.Socket2.client.ip, position);
 			UDP.send(this.Socket3.client.ip, position);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
-		 this.Socket3.client == null && this.Socket4.client == null) 
+		 this.Socket3.client == null && this.Socket4.client == null)
 		{
 			UDP.send(this.Socket1.client.ip, position);
 			UDP.send(this.Socket2.client.ip, position);
@@ -204,10 +303,10 @@ class Room4Class
 
 	PositionBusy(x, y, socket, rotation)
 	{
-		var roomSocket = this.which(socket);
+		let roomSocket = this.which(socket);
 		roomSocket.place = [x, y];
 		roomSocket.rotation = rotation;
-		var position = `${roomSocket.num} ${x} ${y} ${roomSocket.rotation} 0 `;
+		let position = `${roomSocket.num} ${x} ${y} ${roomSocket.rotation} 0 `;
 
 		if(this.Socket1.Redy == true && this.Socket2.Redy == true &&
 		 this.Socket3.Redy == true && this.Socket4.Redy == true)
@@ -218,14 +317,14 @@ class Room4Class
 			UDP.send(this.Socket4.client.ip, position);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
-		 this.Socket3.Redy == true && this.Socket4.client == null) 
+		 this.Socket3.Redy == true && this.Socket4.client == null)
 		{
 			UDP.send(this.Socket1.client.ip, position);
 			UDP.send(this.Socket2.client.ip, position);
 			UDP.send(this.Socket3.client.ip, position);
 		}
 		else if (this.Socket1.Redy == true && this.Socket2.Redy == true &&
-		 this.Socket3.client == null && this.Socket4.client == null) 
+		 this.Socket3.client == null && this.Socket4.client == null)
 		{
 			UDP.send(this.Socket1.client.ip, position);
 			UDP.send(this.Socket2.client.ip, position);

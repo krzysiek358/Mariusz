@@ -1,5 +1,5 @@
 const net = require('net');
-var server = net.createServer();
+let server = net.createServer();
 
 // server.on("connection", function(socket)
 // {
@@ -9,14 +9,14 @@ var server = net.createServer();
 
 // 	server.listen(8084, function(){
 // 		console.log("port: 8084, nasluch ");
-		
+
 // 	});
 
 
 // 		socket.on('data', function(data)
 // 	{
-// 		var y = JSON.parse(data.toString().slice(0, -1));
-// 		var x = data.toJSON();
+// 		let y = JSON.parse(data.toString().slice(0, -1));
+// 		let x = data.toJSON();
 // 		console.log(data);
 // 		console.log(x.code);
 // 		console.log(x);
@@ -28,6 +28,6 @@ var server = net.createServer();
 // });
 MapSize = [800, 600];
 
- var b = Buffer.from(MapSize);
+ let b = Buffer.from(MapSize);
 
 console.log(b);
